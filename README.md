@@ -1,0 +1,1 @@
+With help of SDR (Software-defined Raio), AetherVanta aims to provide a live GNSS (Global Navigation Satellite System) status monitor and multipath profiling, and more importantly flag anomalies in real time.
