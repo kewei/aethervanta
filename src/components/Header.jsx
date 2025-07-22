@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-export function Header() {
+export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -30,6 +30,18 @@ export function Header() {
           <nav className="hidden lg:flex items-center gap-4 text-sm font-medium text-gray-700 ml-6">
             <Link to="/dashboard" className="hover:text-blue-600">
               Dashboard
+            </Link>
+            <Link to="/spectrum" className="hover:text-blue-600">
+              Spectrum
+            </Link>
+            <Link to="/navigation" className="hover:text-blue-600">
+              Navigation
+            </Link>
+            <Link to="/anomalies" className="hover:text-blue-600">
+              Anomalies
+            </Link>
+            <Link to="/analysis" className="hover:text-blue-600">
+              Analysis
             </Link>
             <DropdownMenu>
                 <DropdownMenuTrigger className="hover:text-blue-600">
@@ -59,9 +71,6 @@ export function Header() {
                     <DropdownMenuItem><Link to="/GLONASS">GLONASS</Link></DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
-            <Link to="/reports" className="hover:text-blue-600">
-              Reports
-            </Link>
           </nav>
         </div>
 
@@ -97,6 +106,18 @@ export function Header() {
           >
             Dashboard
           </Link>
+          <Link to="/spectrum" className="hover:text-blue-600">
+              Spectrum
+            </Link>
+            <Link to="/navigation" className="hover:text-blue-600">
+              Navigation
+            </Link>
+            <Link to="/anomalies" className="hover:text-blue-600">
+              Anomalies
+            </Link>
+            <Link to="/analysis" className="hover:text-blue-600">
+              Analysis
+            </Link>
           <div className="relative w-full">
           <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -128,13 +149,6 @@ export function Header() {
                 </DropdownMenuContent>
             </DropdownMenu>
             </div>
-          <Link
-            to="/reports"
-            onClick={() => setMenuOpen(false)}
-            className="hover:text-blue-600"
-          >
-            Reports
-          </Link>
 
           {/* Mobile auth buttons */}
           <div className="mt-2 flex gap-2">

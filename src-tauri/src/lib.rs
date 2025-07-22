@@ -1,7 +1,8 @@
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
-use soapysdr::Args;
-mod dev_inter;
-use crate::dev_inter::dev_connect::connect_device;
+mod sdr_barn;
+use crate::sdr_barn::dev_connect::{upload_sdr_config};
+use crate::sdr_barn::list_sdrs::list_sdrs;
+use crate::sdr_barn::sdr_state::{SdrStore, SdrConfigStore};
 
 pub fn run() {
   tauri::Builder::default()
@@ -13,13 +14,15 @@ pub fn run() {
             .build(),
         )?;
       }
-      let mut args = Args::new();
-      args.set("driver", "rtlsdr");
-      for dev in soapysdr::enumerate(args).unwrap() {
-        println!("Found device: {}", dev);
-      }
+      
       Ok(())
     })
+    .manage(SdrStore::default())
+    .manage(SdrConfigStore::default())
+    .invoke_handler(tauri::generate_handler![
+      list_sdrs,
+      upload_sdr_config,
+    ])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }
